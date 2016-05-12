@@ -4,4 +4,5 @@
     <string name="morse">Morse It!</string>
     <string name="clear">Clear</string>
     <string name="morsePhrase"></string>
+    <string name="flash">Flash</string>
 </resources>

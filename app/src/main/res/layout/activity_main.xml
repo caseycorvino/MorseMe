@@ -27,7 +27,9 @@
         android:hint="@string/hint"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:imeOptions="actionDone"
+        android:singleLine="true"/>
 
     <ImageView
         android:layout_width="wrap_content"
@@ -57,6 +59,16 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="40dp"
         android:textSize="50dp" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/flashBox"
+        android:text="@string/flash"
+        android:theme="@android:style/Theme.Light"
+        android:checked="false"
+        android:layout_above="@+id/clearButton"
+        android:layout_alignStart="@+id/morseButton" />
 
 
 </RelativeLayout>
