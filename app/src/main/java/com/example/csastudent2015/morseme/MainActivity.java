@@ -125,13 +125,24 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        //to do
+        // TODO
 
-        //max length for morsephrase
+        //max length for morsephrase (DONE)
+        //lock screen orientation (DONE)
+        //close virtual keyboard on enter key (DONE)
         //have correct times for flashes
         //async task
         //themes!
     }
+
+
+
+
+
+
+
+
+
 
 
 //    @Nullable
