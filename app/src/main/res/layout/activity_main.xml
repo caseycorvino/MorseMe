@@ -12,10 +12,10 @@
     android:background="#ffffff">
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
         android:id="@+id/morseMeLogo"
-        android:src="@drawable/logo"
+        android:src="@drawable/appicon"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
@@ -33,7 +33,7 @@
         android:maxLength="25"/>
 
     <ImageView
-        android:layout_width="wrap_content"
+        android:layout_width="140dp"
         android:layout_height="50dp"
         android:id="@+id/morseButton"
         android:src="@drawable/morseir"
@@ -43,14 +43,14 @@
         android:layout_centerHorizontal="true" />
 
     <ImageView
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="50dp"
         android:id="@+id/clearButton"
         android:src="@drawable/clear"
         android:clickable="true"
         android:paddingTop="10dp"
         android:layout_below="@+id/morseButton"
-        android:layout_alignStart="@+id/morseButton" />
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -66,10 +66,11 @@
         android:layout_height="wrap_content"
         android:id="@+id/flashBox"
         android:text="@string/flash"
-        android:theme="@android:style/Theme.Light"
+        android:theme="@android:style/Theme.Holo.Light"
         android:checked="false"
-        android:layout_above="@+id/clearButton"
-        android:layout_alignStart="@+id/morseButton" />
+        android:layout_alignBottom="@+id/morseButton"
+        android:layout_alignStart="@+id/morseText" />
+    <!--android:button="@drawable/check"    changes check mark-->
 
 
 </RelativeLayout>

@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">MorseMe</string>
-    <string name="hint">Enter Text!</string>
-    <string name="morse">Morse It!</string>
+    <string name="hint">enter text</string>
+    <string name="morse">morse It!</string>
     <string name="clear">Clear</string>
     <string name="morsePhrase"></string>
-    <string name="flash">Flash</string>
+    <string name="flash">flash</string>
 </resources>

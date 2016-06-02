@@ -5,7 +5,7 @@ android {
     buildToolsVersion "23.0.2"
 
     defaultConfig {
-        applicationId "com.example.csastudent2015.morseme"
+        applicationId "com.michaelhawk.csastudent2015.morseme"
         minSdkVersion 19
         targetSdkVersion 22
         versionCode 1

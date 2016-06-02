@@ -2,6 +2,7 @@ package com.example.csastudent2015.morseme;
 
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.media.MediaPlayer;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -27,13 +28,17 @@ public class MainActivity extends AppCompatActivity {
     String string;
     int arrayLength;
 
+    MediaPlayer lm;
+    MediaPlayer sm;
 
+    FlashTimerTask t;
 
 
     Flashlight f;
     MorseCode morseCode;
 
-    CheckBox checkBox;
+    CheckBox flashBox;
+
 
     ArrayList<Integer> morseCodeArray;
 
@@ -46,13 +51,17 @@ public class MainActivity extends AppCompatActivity {
         f = new Flashlight();
         text = (EditText) findViewById(R.id.morseText);
 
-        checkBox = (CheckBox) findViewById(R.id.flashBox);
+        flashBox = (CheckBox) findViewById(R.id.flashBox);
 
 
 
         final Context context = this;
         hasFlash = context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_FLASH);
 
+
+
+        lm = MediaPlayer.create(getApplicationContext(), R.raw.longmorse);
+        sm = MediaPlayer.create(getApplicationContext(), R.raw.shortmorse);
 
         ImageView imv = (ImageView) findViewById(R.id.morseButton);
 
@@ -72,13 +81,19 @@ public class MainActivity extends AppCompatActivity {
                 TextView text2 = (TextView) findViewById(R.id.morsePhrase); //displays morsePhrase as morse code at the bottom
                 text2.setText(string);
 
-                if(hasFlash && checkBox.isChecked()) {
+                if(hasFlash && flashBox.isChecked()){
+                    t = new FlashTimerTask();
+                    t.execute();
 
-                    new TimerTask().execute();
                 }
-                if (!hasFlash && checkBox.isChecked()) {
+                else if(hasFlash && flashBox.isChecked()) {
+                   t = new FlashTimerTask();
+                    t.execute();
+                }
+                else if (!hasFlash && flashBox.isChecked()) {
                     Toast.makeText(MainActivity.this, "Your device does not support flash.", Toast.LENGTH_SHORT).show();
                 }
+
 
 
             }
@@ -96,31 +111,12 @@ public class MainActivity extends AppCompatActivity {
 
                 //cancel async task
 
+                if(t != null && !t.isCancelled()) {
+                    t.cancel(true);
+                }
 
             }
         });
-
-
-
-
-//        text.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-//
-//            @Override
-//            public boolean onEditorAction(TextView v, int keyCode, KeyEvent event){
-//                if ( (event.getAction() == KeyEvent.ACTION_DOWN  ) &&
-//                        (keyCode == KeyEvent.KEYCODE_ENTER)   )
-//                {
-//                    // hide virtual keyboard
-//                    InputMethodManager imm = (InputMethodManager)context.getSystemService(Context.INPUT_METHOD_SERVICE);
-//                    imm.hideSoftInputFromWindow(text.getWindowToken(), 0);
-//                    return true;
-//                }
-//                return false;
-//            }
-//        });
-
-
-
 
 
 
@@ -130,52 +126,12 @@ public class MainActivity extends AppCompatActivity {
         //max length for morsephrase (DONE)
         //lock screen orientation (DONE)
         //close virtual keyboard on enter key (DONE)
-        //have correct times for flashes
-        //async task
+        //have correct times for flashes (DONE)
+        //async task cancel  (done)
+        //import/create media player (done)
+        //play sounds
         //themes!
     }
-
-
-
-
-
-
-
-
-
-
-
-//    @Nullable
-//    @Override
-//    public View onCreateView(String name, @NonNull Context context, @NonNull AttributeSet attrs) {
-//        return super.onCreateView(name, context, attrs);
-//
-//        text.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-//
-//            @Override
-//            public boolean onEditorAction(TextView v, int keyCode, KeyEvent event){
-//                if ( (event.getAction() == KeyEvent.ACTION_DOWN  ) &&
-//                        (keyCode == KeyEvent.KEYCODE_ENTER)   )
-//                {
-//                    // hide virtual keyboard
-//                    InputMethodManager imm = (InputMethodManager)getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-//                    imm.hideSoftInputFromWindow(text.getWindowToken(), 0);
-//                    return true;
-//                }
-//                return false;
-//            }
-//        });
-//
-//
-//
-//    }
-
-
-
-
-
-
-
 
 
 
@@ -193,6 +149,8 @@ public class MainActivity extends AppCompatActivity {
 
         f.flashlightOn();
 
+        //short sound plays
+
         sleep(1);
 
         f.flashlightOff();
@@ -203,19 +161,23 @@ public class MainActivity extends AppCompatActivity {
 
         f.flashlightOn();
 
-        sleep(100);
+        //long sound plays
+
+        sleep(400);
 
         f.flashlightOff();
+
     }
+
+
 
     public void spaceMorse() {
 
-        sleep(250);
+        sleep(500);
 
     }
 
-
-               public class TimerTask extends AsyncTask<Void, Void, Void> {
+               public class FlashTimerTask extends AsyncTask<Void, Void, Void> {
 
 
                 @Override
@@ -227,6 +189,7 @@ public class MainActivity extends AppCompatActivity {
                         while (counter < arrayLength && !isCancelled())
 
                         {
+
                             if (morseCodeArray.get(counter) == 1) {
                                 shortMorse();
                                 counter++;
@@ -252,6 +215,8 @@ public class MainActivity extends AppCompatActivity {
                        super.onCancelled();
                    }
                }
+
+
 
 
 }
