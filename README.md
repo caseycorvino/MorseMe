@@ -6,24 +6,8 @@
 This is one of the earlier apps I made. I made this app my sophmore year in highschool. I uploaded the app to the Play Store on my teacher at the time's Google Developer Account. 
 <pre>
 App Features:
-  - sign up
-  - login
-  - follower system
-  - main feed page
-  - filter main feed by now, past, upcoming
-  - search for users
-  - profile page
-  - selected user profile page
-  - add a spot function
-  - edit account
-  - edit spots
-  - temporary spots. the spots delete after 24 hours
-  - now or upcoming spots
-  - urls to event
-  - time of events
-  - profile picture
-  - clicked Spot opens up url
-  - clicked Spot's left button opens up maps with the address already entered
+  -Convert text to morse patterned flash.
+  -Convert text to morse pattern.
 </pre>
 </p>
 </html>
